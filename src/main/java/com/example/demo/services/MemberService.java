@@ -1,6 +1,7 @@
 package com.example.demo.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,6 +22,17 @@ public class MemberService {
 	public List<Member> getMembers() {
 		List<Member> members = memberRepo.findAll();
 		return members;
+	}
+	
+	public Member getMember(Integer id) {
+		Optional<Member> member = memberRepo.findById(id);
+		return member.orElseThrow(() -> new RuntimeException("Member not found!"));
+	}
+
+	public void deleteMember(Integer id) {
+		Member member = getMember(id);
+		member.setActive(false);
+		memberRepo.save(member);
 	}
 }
 

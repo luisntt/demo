@@ -27,6 +27,7 @@ public class Member implements Serializable {
     
     private Date memberSince;
     
+    private boolean active;
 
 	public Member() {
 
@@ -40,6 +41,7 @@ public class Member implements Serializable {
 		this.password = password;
 		this.department = department;
 		this.memberSince = memberSince;
+		this.active = true;
 	}
 
 	public Integer getId() {
@@ -96,6 +98,15 @@ public class Member implements Serializable {
 
 	public void setMemberSince(Date memberSince) {
 		this.memberSince = memberSince;
+	}
+	
+	
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
 	}
 
 	@Override
