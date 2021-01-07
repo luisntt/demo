@@ -2,8 +2,12 @@ package com.example.demo.models;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.sql.Timestamp;
 
 import javax.persistence.*;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
 @Table(name="members")
@@ -21,28 +25,19 @@ public class Member implements Serializable {
     
     private String email;
     
-    private String password;
+    private String encryptedPassword;
     
     private String department;
     
     private Date memberSince;
     
     private boolean active;
-
-	public Member() {
-
-	}
-
-	public Member(String name, Date birthday, String email, String password, String department, Date memberSince) {
-		super();
-		this.name = name;
-		this.birthday = birthday;
-		this.email = email;
-		this.password = password;
-		this.department = department;
-		this.memberSince = memberSince;
-		this.active = true;
-	}
+    
+    @CreationTimestamp
+    private Timestamp createdAt;
+    
+    @UpdateTimestamp
+	private Timestamp updatedAt;    
 
 	public Integer getId() {
 		return id;
@@ -76,14 +71,6 @@ public class Member implements Serializable {
 		this.email = email;
 	}
 
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
 	public String getDepartment() {
 		return department;
 	}
@@ -107,6 +94,30 @@ public class Member implements Serializable {
 
 	public void setActive(boolean active) {
 		this.active = active;
+	}
+
+	public String getEncryptedPassword() {
+		return encryptedPassword;
+	}
+
+	public void setEncryptedPassword(String encryptedPassword) {
+		this.encryptedPassword = encryptedPassword;
+	}
+
+	public Timestamp getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(Timestamp createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public Timestamp getUpdatedAt() {
+		return updatedAt;
+	}
+
+	public void setUpdatedAt(Timestamp updatedAt) {
+		this.updatedAt = updatedAt;
 	}
 
 	@Override
