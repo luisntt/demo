@@ -2,6 +2,7 @@ package com.example.demo.models;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.UUID;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -29,6 +30,8 @@ public class Address implements Serializable{
 	@Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Integer address_id;
+	
+	private UUID address_uuid = UUID.randomUUID();
 
     private String city;
     

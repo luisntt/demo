@@ -3,6 +3,7 @@ package com.example.demo.models;
 import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.UUID;
 
 import javax.persistence.*;
 
@@ -27,6 +28,8 @@ public class Member implements Serializable {
 	@Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Integer id;
+	
+	private UUID member_uuid = UUID.randomUUID();
 
     private String name;
     
