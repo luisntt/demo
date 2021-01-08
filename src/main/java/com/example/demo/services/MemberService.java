@@ -31,7 +31,6 @@ public class MemberService {
 
 	public void deleteMember(Integer id) {
 		Member member = getMember(id);
-		member.setActive(false);
 		memberRepo.save(member);
 	}
 }
